@@ -1,0 +1,48 @@
+version: '3.1'
+networks:
+  mynetFront:
+    driver: bridge
+  mynetEnd:
+    driver: bridge
+
+
+services:
+  backend:                                  # 后端
+    container_name: backend
+    restart: always
+    build: ./     # 上下文根目录，在该目录执行Dockerfile，build出镜像
+    networks:
+      - mynetEnd
+      - mynetFront
+    ports:                              # 映射端口
+      - 3001:3001
+    command:  "npm start" # 容器创建后执行命令
+    depends_on:     # 依赖于api容器，被依赖容器启动后此web容器才可启动
+      - redis
+
+  frontend:             # 前端
+    container_name: frontend
+    image: nginx
+    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf #挂载nginx配置
+      - ./frontend/dist:/usr/share/nginx/html/  #挂载项目
+    networks:
+      - mynetFront
+    ports:
+      - 80:80                     # 映射端口
+
+    depends_on:     
+      - backend
+
+  redis:
+    container_name: redis
+    image: "redis:alpine"
+    networks:
+      - mynetEnd
+    expose:
+      - "6777"
+    restart: always
+    volumes:
+      - ./redisData:/data
+      

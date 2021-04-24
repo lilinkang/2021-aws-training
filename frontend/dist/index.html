@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport" />
+    <title>title</title>
+    <link rel="icon" href="favicon.ico" />
+    <script src="jquery-2.0.1.min.js"></script>
+</head>
+<body>
+hello world...
+<div id="main"></div>
+<script>
+  $(function () {
+    $.ajax({
+      url: "http://localhost/api",
+      data: {},
+      success: function(resp) {
+        $('#main').html(resp.version + '  , service is normal....');
+      }
+    });
+  });
+</script>
+</body>
+</html>
