@@ -73,7 +73,9 @@ dockerd的image的就是通过层层叠加存储的，每次修改作为一次co
 ****
 
 ### Image放置docker hub网址：
-To do
+后端地址：https://hub.docker.com/r/linkangli/aws-training-backend
+前端地址：https://hub.docker.com/r/linkangli/aws-training-front
+数据库地址：https://hub.docker.com/r/linkangli/aws-training-redis
 
 
 
