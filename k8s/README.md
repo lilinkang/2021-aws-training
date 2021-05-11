@@ -86,4 +86,6 @@ linkang.lihoughtworks.com@linkangdeMacBook-Pro k8s % kubectl get pod -n cl-test
 NAME                                  READY   STATUS             RESTARTS   AGE   
 demo-deployment-5c547cbb8d-kf8l8      0/1     ImagePullBackOff   0          111s   
 demo-deployment1-5c547cbb8d-nrvkk     0/1     ErrImagePull       0          69s   
-demo-deploymentxxx-5c547cbb8d-5z5dn   0/1     ImagePullBackOff   0          18s    
+demo-deploymentxxx-5c547cbb8d-5z5dn   0/1     ImagePullBackOff   0          18s   
+ 
+![截屏2021-05-11 下午10.46.25.png](https://i.loli.net/2021/05/11/yX1UstjRAbwCvkQ.png)
