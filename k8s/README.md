@@ -1,6 +1,6 @@
 K8s Traning homework
 
-#### 简述 kubectl log / describe / apply / delete 命令的功能  
+## 简述 kubectl log / describe / apply / delete 命令的功能  
 1. kubectl log:  
 输出pod中一个容器的日志,如果pod只包含一个容器则可以省略容器名  
 kubectl logs [-f] [-p] POD [-c CONTAINER]   
@@ -72,4 +72,18 @@ kubectl delete ([-f FILENAME] | TYPE [(NAME | -l label | --all)])
 
 
 
-#### 
+## 将示例中的 Node.js 应用（或自定义其他工程）通过 Deployment 部署
+ linkang.lihoughtworks.com@linkangdeMacBook-Pro k8s % docker images  
+REPOSITORY                       TAG       IMAGE ID       CREATED          SIZE   
+k8sdemo                          v1        7e149f523719   50 minutes ago   946MB   
+localhost:5000/k8sdemo           1.0       7e149f523719   50 minutes ago   946MB  
+ 
+linkang.lihoughtworks.com@linkangdeMacBook-Pro k8s % kubectl create  -f demo.yaml    
+service/demo-servicexxx created   
+deployment.apps/demo-deploymentxxx created    
+
+linkang.lihoughtworks.com@linkangdeMacBook-Pro k8s % kubectl get pod -n cl-test   
+NAME                                  READY   STATUS             RESTARTS   AGE   
+demo-deployment-5c547cbb8d-kf8l8      0/1     ImagePullBackOff   0          111s   
+demo-deployment1-5c547cbb8d-nrvkk     0/1     ErrImagePull       0          69s   
+demo-deploymentxxx-5c547cbb8d-5z5dn   0/1     ImagePullBackOff   0          18s    
